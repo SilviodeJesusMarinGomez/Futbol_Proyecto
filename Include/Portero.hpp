@@ -1,7 +1,7 @@
 #pragma once
 #include <Dibujo.hpp>
 #include <Actualizable.hpp>
-#include <Bocha.hpp>
+#include <Pelota.hpp>
 #include <SFML/Graphics.hpp>
 
 class Portero : public Dibujo, public Actualizable
