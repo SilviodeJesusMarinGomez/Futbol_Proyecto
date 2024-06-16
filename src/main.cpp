@@ -4,13 +4,10 @@
 
 using namespace std;
 
-
-
-
 int main()
 {
-    
-     int fuerza = 25, fuerzaPortero=35000;
+    // Definir las fuerzas de la bola y del portero
+    int fuerza = 25, fuerzaPortero = 35000;
 
     // Crear una ventana de SFML
     sf::RenderWindow ventana(sf::VideoMode(1200, 800), "Crazy Penalty");
@@ -19,19 +16,16 @@ int main()
     b2Vec2 vectorGravedad(0.0f, 7.0f);
     b2World mundo(vectorGravedad);
 
-// Crear un suelo estÃ¡tico
+    // Crear un suelo estÃ¡tico
     b2BodyDef cuerpoPaloDef;
     cuerpoPaloDef.position.Set(1100, 300.0f); // PosiciÃ³n del centro del cuerpo
     b2Body *cuerpoPalo = mundo.CreateBody(&cuerpoPaloDef);
 
     // Crear una forma rectangular
     b2PolygonShape formaPalo;
-    int PaloWidth = 30; // 600 pixeles de ancho
-    int PaloHeight = 450;  // 10 pixeles de alto
+    int PaloWidth = 30;   // 600 pixeles de ancho
+    int PaloHeight = 450; // 10 pixeles de alto
     formaPalo.SetAsBox(PaloWidth / 2.0f, PaloHeight / 2.0f);
-
-
-
 
     b2BodyDef cuerpoSuperiorDef;
     cuerpoSuperiorDef.position.Set(1200, 100.0f); // PosiciÃ³n del centro del cuerpo
@@ -40,10 +34,8 @@ int main()
     // Crear una forma rectangular
     b2PolygonShape formaSuperior;
     int SuperiorWidth = 115; // 600 pixeles de ancho
-    int SuperiorHeight = 30;  // 10 pixeles de alto
-    formaSuperior.SetAsBox(SuperiorWidth/ 2.0f, SuperiorHeight / 2.0f);
-   
-
+    int SuperiorHeight = 30; // 10 pixeles de alto
+    formaSuperior.SetAsBox(SuperiorWidth / 2.0f, SuperiorHeight / 2.0f);
 
     // Crear un rectÃ¡ngulo en el lado derecho
     b2BodyDef cuerpoRectanguloDef;
@@ -53,18 +45,16 @@ int main()
 
     // Crear una forma rectangular
     b2PolygonShape formaRectangulo;
-    int rectWidth = 50;  // 100 pixeles de ancho
+    int rectWidth = 50;   // 100 pixeles de ancho
     int rectHeight = 150; // 200 pixeles de alto
     formaRectangulo.SetAsBox(rectWidth / 2.0f, rectHeight / 2.0f);
-    
+
     // Agregar la forma al cuerpo
     b2FixtureDef fixtureRectanguloDef;
     fixtureRectanguloDef.shape = &formaRectangulo;
     fixtureRectanguloDef.density = 20.0f;
     fixtureRectanguloDef.friction = 0.007f;
     cuerpoRectangulo->CreateFixture(&fixtureRectanguloDef);
-   
-
 
     // Crear un suelo estÃ¡tico
     b2BodyDef cuerpoSueloDef;
@@ -77,14 +67,11 @@ int main()
     int boxHeight = 100;  // 10 pixeles de alto
     formaSuelo.SetAsBox(boxWidth / 2.0f, boxHeight / 2.0f);
 
-
     // Agregar la forma al cuerpo
     b2FixtureDef fixtureSueloDef;
     fixtureSueloDef.shape = &formaSuelo;
     fixtureSueloDef.friction = 1.0f;
     cuerpoSuelo->CreateFixture(&fixtureSueloDef);
-
-
 
     // Crear un cuerpo dinÃ¡mico
     b2BodyDef cuerpoBolaDef;
@@ -102,8 +89,6 @@ int main()
     fixtureBolaDef.density = 0.1f;
     fixtureBolaDef.friction = 0.7f;
     cuerpoBola->CreateFixture(&fixtureBolaDef);
-
-
 
     // Bucle principal del juego
     while (ventana.isOpen())
@@ -127,13 +112,12 @@ int main()
             cuerpoBola->ApplyLinearImpulse(b2Vec2(0, fuerza), cuerpoBola->GetWorldCenter(), true);
 
         // Controlar el portero con el teclado
-   
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        cuerpoRectangulo->ApplyLinearImpulse(b2Vec2(0, -fuerzaPortero), cuerpoRectangulo->GetWorldCenter(), true);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        cuerpoRectangulo->ApplyLinearImpulse(b2Vec2(0, fuerzaPortero), cuerpoRectangulo->GetWorldCenter(), true);
- 
-        
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            cuerpoRectangulo->ApplyLinearImpulse(b2Vec2(0, -fuerzaPortero), cuerpoRectangulo->GetWorldCenter(), true);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            cuerpoRectangulo->ApplyLinearImpulse(b2Vec2(0, fuerzaPortero), cuerpoRectangulo->GetWorldCenter(), true);
+
         // Restringir los lÃ­mites de la bola a los lÃ­mites de la pantalla
         b2Vec2 posicionBola = cuerpoBola->GetPosition();
         float radioBola = formaBola.m_radius;
@@ -151,13 +135,10 @@ int main()
         if (posicionBola.y > limiteInferior)
             cuerpoBola->SetTransform(b2Vec2(posicionBola.x, limiteInferior), cuerpoBola->GetAngle());
 
-    
-    sf::Vector2u ventanaSize = ventana.getSize();
-    float maxX = ventanaSize.x - rectWidth / 2.0f;
-    float maxY = ventanaSize.y - rectHeight / 2.0f;
-    cuerpoRectangulo->SetTransform(b2Vec2(std::min(cuerpoRectangulo->GetPosition().x, maxX), std::min(cuerpoRectangulo->GetPosition().y, maxY)), cuerpoRectangulo->GetAngle());
-
-            
+        sf::Vector2u ventanaSize = ventana.getSize();
+        float maxX = ventanaSize.x - rectWidth / 2.0f;
+        float maxY = ventanaSize.y - rectHeight / 2.0f;
+        cuerpoRectangulo->SetTransform(b2Vec2(std::min(cuerpoRectangulo->GetPosition().x, maxX), std::min(cuerpoRectangulo->GetPosition().y, maxY)), cuerpoRectangulo->GetAngle());
 
         // Actualizar el mundo de Box2D
         // Ajustar el valor de 1.0 / 60.0 para cambiar la velocidad de la simulaciÃ³n fÃ­sica
@@ -192,7 +173,6 @@ int main()
             cuerpoRectangulo->GetPosition().x,
             cuerpoRectangulo->GetPosition().y);
         ventana.draw(portero);
-
 
         sf::RectangleShape palo(sf::Vector2f(PaloWidth, PaloHeight));
         palo.setOrigin(PaloWidth / 2.0f, PaloHeight / 2.0f); // El origen x,y estÃ¡ en el centro de la forma
