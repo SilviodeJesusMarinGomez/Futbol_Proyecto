@@ -160,7 +160,7 @@ int main()
         // Dibujar la bola
         sf::CircleShape bola(formaBola.m_radius);
         bola.setOrigin(formaBola.m_radius, formaBola.m_radius);
-        bola.setFillColor(sf::Color::White);
+        bola.setFillColor(sf::Color::Red);
         bola.setPosition(
             cuerpoBola->GetPosition().x,
             cuerpoBola->GetPosition().y);
