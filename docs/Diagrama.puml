@@ -11,10 +11,10 @@ class Porteria
 class Ventana
 class Actualizable
 class Dibujo
-class Juegos 
+class Juego 
 
-Personas o-- Juegos
-Fifa --|> Juegos
+Personas o-- Juego
+Fifa --|> Juego
 Fifa *-- Jugador
 Fifa *-- Porteria
 Fifa *-- Portero
