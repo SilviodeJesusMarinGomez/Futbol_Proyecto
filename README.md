@@ -1,7 +1,8 @@
 # Futbol_Proyecto
 ## Silvio de Jesús Marín Gómez
 ## Ulises Ricardo Torres Calderon
-![Imagen de penal](imagenes/penal.jpg)
+
+![Imagen de penal](/assets/imagenes/penal.jpg)
 
 ## Descripcion
 ¡Bienvenido al mundo de "Crazy Penalty"! En este emocionante juego de penales, la simplicidad se combina con la precisión para brindarte una experiencia única.
@@ -12,7 +13,7 @@ Compite contra tus amigos para demostrar quién tiene los nervios más fuertes y
 
 ¡Prepárate para la máxima emoción en cada disparo con "Crazy Penalty"!
 
-![Bicho festejando](imagenes/Bicho.gif)
+![Bicho festejando](assets/imagenes/Bicho.gif)
 
 
 

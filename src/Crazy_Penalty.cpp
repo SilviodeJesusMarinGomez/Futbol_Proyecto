@@ -1,16 +1,30 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
 #include <iostream>
+#include <SFML/Audio.hpp>
+//#include <Musica.hpp>
+
 
 using namespace std;
 
 int main()
 {
+
     // Definir las fuerzas de la bola y del portero
     int fuerza = 25, fuerzaPortero = 35000;
 
     // Crear una ventana de SFML
     sf::RenderWindow ventana(sf::VideoMode(1200, 800), "Crazy Penalty");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Reproductor de musica");
+
+    sf::Music music;
+    if (!music.openFromFile("./assets/Musica/Champions.ogg"))
+    {
+        // Error al cargar el archivo de música
+        return -1;
+    }
+  // Reproducir la música
+    music.play();
 
     // Crear un mundo de Box2D
     b2Vec2 vectorGravedad(0.0f, 7.0f);
@@ -99,6 +113,7 @@ int main()
         {
             if (evento.type == sf::Event::Closed)
                 ventana.close();
+                music.stop();
         }
 
         // Controlar la bola con el teclado
