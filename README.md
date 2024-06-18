@@ -1,4 +1,6 @@
 # Futbol_Proyecto
+## Silvio de Jesús Marín Gómez
+## Ulises Ricardo Torres Calderon
 ![Imagen de penal](imagenes/penal.jpg)
 
 ## Descripcion
