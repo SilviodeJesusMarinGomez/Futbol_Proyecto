@@ -2,8 +2,7 @@
 #include <Box2D/Box2D.h>
 #include <iostream>
 #include <SFML/Audio.hpp>
-//#include <Musica.hpp>
-
+// #include <Musica.hpp>
 
 using namespace std;
 
@@ -15,7 +14,7 @@ int main()
 
     // Crear una ventana de SFML
     sf::RenderWindow ventana(sf::VideoMode(1200, 800), "Crazy Penalty");
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Reproductor de musica");
+    // sf::RenderWindow window(sf::VideoMode(800, 600), "Reproductor de musica");
 
     sf::Music music;
     if (!music.openFromFile("./assets/Musica/Champions.ogg"))
@@ -23,8 +22,11 @@ int main()
         // Error al cargar el archivo de música
         return -1;
     }
-  // Reproducir la música
+    // Reproducir la música
     music.play();
+    //music.getVolume();
+    // Repetir la música hasta que se cierre la ventana
+    //music.setLoop(true);
 
     // Crear un mundo de Box2D
     b2Vec2 vectorGravedad(0.0f, 7.0f);
@@ -113,7 +115,7 @@ int main()
         {
             if (evento.type == sf::Event::Closed)
                 ventana.close();
-                music.stop();
+            music.stop();
         }
 
         // Controlar la bola con el teclado

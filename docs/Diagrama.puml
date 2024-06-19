@@ -1,28 +1,67 @@
-@startuml Si
+@startuml
 
+class Fifa {
+    + iniciarPartido()
+    + finalizarPartido()
+    + pausarPartido()
+}
 
+class Personas {
+    + agregarPersona()
+    + eliminarPersona()
+}
 
-class Fifa
-class Personas
-class Jugador
-class Balon
-class Portero
-class Porteria
-class Ventana
-class Actualizable
-class Dibujo
-class Juego 
+class Jugador {
+    + correr()
+    + patear()
+    + pasar()
+    + defender()
+}
 
-Personas o-- Juego
-Fifa --|> Juego
-Fifa *-- Jugador
-Fifa *-- Porteria
-Fifa *-- Portero
-Fifa *-- Balon
-Fifa o-- Ventana
-Fifa o-- Dibujo
-Fifa o-- Actualizable
-Portero o-- Porteria
-Jugador o-- Balon
+class Balon {
+    + mover()
+    + detener()
+}
+
+class Portero {
+    + atajar()
+    + despejar()
+}
+
+class Porteria {
+    + registrarGol()
+}
+
+class Ventana {
+    + abrir()
+    + cerrar()
+}
+
+class Actualizable {
+    + actualizar()
+}
+
+class Dibujo {
+    + dibujar()
+    + borrar()
+}
+
+class Juego {
+    + iniciar()
+    + detener()
+    + reiniciar()
+}
+
+Personas o-- "1" Juego
+Fifa --|> "1" Juego
+Fifa *-- "11" Jugador
+Fifa *-- "2" Porteria
+Fifa *-- "1" Portero
+Fifa *-- "1" Balon
+Fifa o-- "1" Ventana
+Fifa o-- "1" Dibujo
+Fifa o-- "1" Actualizable
+Portero o-- "1" Porteria
+Jugador o-- "1" Balon
 
 @enduml
