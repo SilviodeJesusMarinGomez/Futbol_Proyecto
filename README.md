@@ -47,7 +47,11 @@ El juego consiste en que el pateador tirará el penal y podrá mover la direcci�
 Se tendrá que refrescar la terminal por cada penal, esto se puede hacer tecleando la tecla 'q' del teclado y después tecleando 'make run' en la terminal para poder volver a tirar otro penal.
 
 ### Video
-![Video](assets/Video/Video%20Crazy%20Penalty.mp4)
+### Video
+
+Para ver un video sobre cómo jugar, haz clic en la imagen de abajo:
+
+[![Crazy_Penalty](http://img.youtube.com/vi/cf4NSgshvOY/0.jpg)](https://youtu.be/cf4NSgshvOY "Video Crazy Penalty")
 
 ### Diagrama UML
 ![DiagramaUML](assets/imagenes/Diagrama%20uml.PNG)
